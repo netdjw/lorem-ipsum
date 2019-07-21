@@ -1,0 +1,19 @@
+{
+    "name": "netdjw/lorem-ipsum",
+    "description": "Lorem ipsum generator for Laravel",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Balazs Winkler",
+            "email": "netdjw@gmail.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "netdjw\\LoremIpsum\\": "src/"
+        }
+    }
+}
