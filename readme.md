@@ -4,7 +4,7 @@
 
 Install the package:
 
-    composer install netdjw/LoremIpsum
+    composer require netdjw/lorem-ipsum
 
 Update the `config/app.php`:
 
@@ -23,6 +23,10 @@ Use this method in your `database/seeds/DatabaseSeeder.php` file (for latin lang
     $this->call([
         'netdjw\LoremIpsum\Database\Seeds\LoremIpsumLaSeeder'
     ]);
+
+Then run migration & seed:
+
+    php artisan migrate --seed
 
 If you want to use a different language change this:
 
@@ -70,24 +74,29 @@ If you got an error on seeding then you need to create a `CreateLoremIpsumTable`
 
 #### Available languages
 
-- english (En)
-- hungarian (Hu)
-- latin (La)
+- english (en)
+- hungarian (hu)
+- latin (la)
 
 ## Use the package
 
-    use netdjw\LoremIpsum\Http\Controller\LoremIpsumController;
+    use netdjw\LoremIpsum\Http\Controllers\LoremIpsumController as LoremIpsum;
 
-    TODO ....
+    // create new instance
+    $lipsum = new LoremIpsum();
+
+    // return 5 paragraphs latin plain text
+    return $lipsum->plainText('la', 5);
+
+    // return 3 praragraps english HTML text
+    return $lipsum->html('en', 3);
 
 # Thanks to
 
-Based on this StackOverflow question[https://stackoverflow.com/questions/20633310/how-to-get-random-text-from-lorem-ipsum-in-php]
+Based on this [StackOverflow question](https://stackoverflow.com/questions/20633310/how-to-get-random-text-from-lorem-ipsum-in-php)
 
-Thanks for the great starter code for mpen[https://stackoverflow.com/users/65387/mpen]
+Thanks for the great starter code for [mpen](https://stackoverflow.com/users/65387/mpen)
 
-English dictionary seeder from here[https://github.com/first20hours/google-10000-english]
-
-Hungarian dictionary seeder from here[http://szotar.com]
-
-Latin dictionary seeder from here[http://latindictionary.wikidot.com/index]
+- English dictionary seeder from [here](https://github.com/first20hours/google-10000-english)
+- Hungarian dictionary seeder from [here](http://szotar.com)
+- Latin dictionary seeder from [here](http://latindictionary.wikidot.com/index)
