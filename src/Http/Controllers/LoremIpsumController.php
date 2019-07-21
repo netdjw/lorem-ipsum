@@ -61,7 +61,12 @@
                     }
 
                     // set up the sentences; every sentence start with uppercase character
-                    $sentences[] = ucfirst(implode(', ', $fragments)) . ".";
+                    $lower_case_sentence = implode(', ', $fragments);
+                    // uppercase functionality for unicode characters too
+                    $sentences[] = mb_convert_case(
+                                        mb_substr($lower_case_sentence, 0, 1), MB_CASE_TITLE
+                                    ) .
+                                    mb_substr($lower_case_sentence, 1) . ".";
                 }
 
                 // set up the paragraps
