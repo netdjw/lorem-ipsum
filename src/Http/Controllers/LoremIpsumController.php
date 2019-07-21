@@ -97,6 +97,16 @@
                         ->get();
             $words = [];
 
+            // start fragment with a short word
+            if ( random_int(0, 1) === 1 ) {
+                $short_items = LoremIpsum::where('lang', $lang)
+                            ->whereRaw('LENGTH(word) <= ?', [3])
+                            ->inRandomOrder()
+                            ->limit(1)
+                            ->get();
+                array_push($words, $short_items[0]->word);
+            }
+
             foreach ($items as $key => $item) {
                 array_push($words, $item->word);
             }
