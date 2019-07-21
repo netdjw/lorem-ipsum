@@ -26,6 +26,13 @@
 
         private function get(string $lang, string $limit)
         {
+            // check we have minimum words on selected language
+            $words_in_language = LoremIpsum::where('lang', $lang)->get();
+
+            if ( count($words_in_language) < 100) {
+                return ['In this language we have not enough words in the database. Did you forgot run the seeder?'];
+            }
+
             // array for results
             $paragraphs = [];
 
